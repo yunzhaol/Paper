@@ -16,6 +16,8 @@ install.packages("janitor")
 install.packages("opendatatoronto")
 install.packages("lubridate")
 install.packages("knitr")
+install.packages("lintr")
+install.packages("renv")
 ```
 
 ```{r}
@@ -29,6 +31,8 @@ library(janitor)
 library(opendatatoronto)
 library(lubridate)
 library(knitr)
+library(lintr)
+library(renv)
 ```
 
 ```{r}
@@ -262,3 +266,5 @@ In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. Th
 @citeR-knitr
 @citelubridate
 @citejanitor
+@citerenv
+@citelintr
