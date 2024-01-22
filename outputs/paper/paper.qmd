@@ -1,9 +1,9 @@
 ---
-title: "Toronto's death registry "
+title: "Toronto death registry"
 author: Yunzhao Li
 thanks: "Code and data are available at: [LINK](https://github.com/yunzhaol/Paper.git)."
 date: 22 January 2024
-abstract: "Interested in the number of death in toronto in 2023. In this project we will make a table of the number of death in Toronto in 2023 to see each month's death registry. By analyzing this table, we can find the months with high number of death and make some connection to several factors like temperature, poicies or incidents of that particular month. The data can also support the City's operational requirements and business functions. "
+abstract: "In Toronto, there are many people died each year. The data of death registry supports the City's operational requirements and business functions. In this project we will make a table of number of death in Toronto for each month in 2023. By analyzing this, we can find months with high number of death and make conjectures with factors like weather, poicies or incidents of that particular month."
 format: pdf
 bibliography: references.bib
 ---
@@ -29,7 +29,13 @@ library(janitor)
 library(opendatatoronto)
 library(lubridate)
 library(knitr)
+```
 
+```{r}
+#| echo: false
+#| include: true
+#| warning: false
+#| message: false
 #### Acquire ####
 #raw_death_registry <-
 #  read_csv(
@@ -93,7 +99,7 @@ cleaned_death_registry <-
   )
 ```
 
-
+@tbl-deathregistrytable
 ```{r}
 #| echo: false
 #| warning: false
@@ -249,5 +255,8 @@ In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. Th
 
 
 # References
-
+@citeR
+@tellingstories
+@citeopendatatoronto
+@citetidyverse
 
