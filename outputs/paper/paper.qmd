@@ -18,6 +18,7 @@ install.packages("lubridate")
 install.packages("knitr")
 install.packages("lintr")
 install.packages("renv")
+install.packages("styler")
 ```
 
 ```{r}
@@ -33,6 +34,7 @@ library(lubridate)
 library(knitr)
 library(lintr)
 library(renv)
+library(styler)
 ```
 
 ```{r}
@@ -268,3 +270,4 @@ In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. Th
 @citejanitor
 @citerenv
 @citelintr
+@citestyler
