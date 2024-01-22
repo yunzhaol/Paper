@@ -259,4 +259,6 @@ In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. Th
 @tellingstories
 @citeopendatatoronto
 @citetidyverse
-
+@citeR-knitr
+@citelubridate
+@citejanitor
