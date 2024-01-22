@@ -1,26 +1,101 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
-author: 
-  - First author
-  - Another author
+title: "Death Registry "
+author: Yunzhao Li
 thanks: "Code and data are available at: LINK."
-date: today
-date-format: long
+date: 21 January 2024
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
 format: pdf
-number-sections: true
 bibliography: references.bib
 ---
 
 ```{r}
-#| include: false
+#| echo: false
+#| warning: false
+install.packages("tidyverse")
+install.packages("janitor")
+install.packages("opendatatoronto")
+install.packages("lubridate")
+install.packages("knitr")
+```
+
+```{r}
+#| include: true
 #| warning: false
 #| message: false
 
 library(tidyverse)
-library(palmerpenguins)
+library(janitor)
+library(opendatatoronto)
+library(lubridate)
+library(knitr)
+
+#### Acquire ####
+raw_death_registry <-
+  read_csv(
+    file =
+      "Death Registry Statistics Data.csv",
+    show_col_types = FALSE
+)
+
+write_csv(
+  x = raw_death_registry,
+  file = "raw_death_registry.csv"
+)
+
+head(raw_death_registry)
 ```
+
+```{r}
+#### Clean ####
+cleaned_death_registry <-
+  clean_names(raw_death_registry) |>
+  mutate(time_period = ym(time_period)) |> 
+  filter(
+    place_of_death == "Toronto",
+    time_period %in% c("2023-01-01","2023-02-01","2023-03-01","2023-04-01","2023-05-01","2023-06-01","2023-07-01","2023-08-01","2023-09-01","2023-10-01","2023-11-01","2023-12-01")
+    ) |>
+  select(time_period, death_licenses)
+
+head(cleaned_death_registry)
+```
+
+```{r}
+write_csv(
+  x = cleaned_death_registry,
+  file = "cleaned_death_registry.csv"
+)
+```
+
+
+```{r}
+#### Explore ####
+cleaned_death_registry <-
+  read_csv(
+    "cleaned_death_registry.csv",
+    show_col_types = FALSE
+  )
+```
+
+
+```{r}
+cleaned_death_registry |>
+  mutate(time_period_month = month(
+    time_period,
+    label = TRUE,
+    abbr = FALSE
+  )) |>
+  arrange(time_period_month) |> 
+  drop_na(death_licenses) |>
+  summarise(death_licenses = sum(death_licenses),
+            .by = time_period_month) |>
+  kable(
+    col.names = c("Month", "Total number of death in Toronto this month")
+  )
+
+```
+
+
+
 
 
 # Introduction
