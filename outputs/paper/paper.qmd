@@ -30,15 +30,27 @@ library(styler)
 
 # Introduction
 
-Death is a topic that people are not often willing to talk about, but it is closely related to municipal management and social resource allocation, so it is necessary to understand the data of death registration and do some basic statistical analysis of it. The data source in this study was obtained by opendatatoronto, from which the data of the Toronto area in 2023 were selected for research and analysis, hoping to produce a table reflecting the number of deaths registered in the Toronto area in each month of 2023, and correlate the data with related factors. Speculation may help in the formulation of future policies, such as whether the death toll is higher in the colder months, then the government can increase investment in the construction of shelters, if it is because of the epidemic or epidemic in certain months, then it can be prevented according to the relevant month and transmission trend, formulate a mask-related policy or appropriately restrict travel, or because of some large-scale accident that caused a large number of new deaths. Which months have a low number of deaths can also be related to the input of some public resources, the increase in per capita income, and the improvement of social welfare, which in turn can be used to judge whether these policies and improvements are significant, whether people's quality of life and income are stable, and whether social security is good. The government can regulate these factors to reduce the number of deaths caused by non-aging, which is the long-term significance of this study. This study will end with these numbers documenting the lives that have accompanied the city and ending their stories.
-The remainder of this paper is structured as follows. @sec-data....
+Death is a topic that people are not often willing to talk about, but it is closely related to the City's operational requirements, business functions as well as social resource allocation, so it is necessary to understand the data of death registration and do some basic statistical analysis of it. 
+
+The data source in this study was obtained by opendatatoronto, from which the data of the Toronto area in 2023 were selected for research and analysis. We expect to produce a table reflecting the number of deaths registered in the Toronto area in each month of 2023, and correlate the data with related factors.
+
+These speculation may help in the formulation of future policies, such as whether the death toll is higher in the colder months, then the government can increase investment in the construction of shelters, if it is because of the epidemic or epidemic in certain months, then it can be prevented according to the relevant month and transmission trend, formulate a mask-related policy or appropriately restrict travel, or because of some large-scale accident that caused a large number of new deaths. Which months have a low number of deaths can also be related to the input of some public resources, the increase in per capita income, and the improvement of social welfare, which in turn can be used to judge whether these policies and improvements are significant, whether people's quality of life and income are stable, and whether social security is good. The government can regulate these factors to reduce the number of deaths caused by non-aging, which is the long-term significance of this study. 
+
+This study will end with these numbers documenting the lives that have accompanied the city and telling their stories implicitly to some extent.
+
+The remainder of this paper is structured as follows. 
+@sec-Data,
+@sec-Result,
+@sec-Conclusion,
+@sec-Appendix
 
 
 # Data
 
+This dataset includes information relating to the registration of deaths documented by Registry Services staff located in four of the civic centres (Scarborough, North York, Toronto and Etobicoke). Registration of death data is entered into the Registry Services Tracking System (RSTS), from which aggregate statistical information is generated to create the dataset. The dataset resides in an Oracle database in the City's environment.
 
+The dataset is created in support of the Vital Statistics Act, which is a Provincial legislation. The dataset also supports the City's operational requirements and business (functions."https://open.toronto.ca/dataset/death-registry-statistics/")
 
-## Read raw data
 
 
 ```{r}
@@ -60,7 +72,7 @@ write_csv(
 ```
 
 
-## Clean data
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -77,7 +89,7 @@ cleaned_death_registry <-
 ```
 
 
-## Tests
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -117,9 +129,15 @@ cleaned_death_registry <-
 
 # Results
 
-The table we were looking for at the beginning of our research was modeled with a dataset, the raw data was read, the clean data was cleaned, and the data was accurately presented and consistent with the sketch. The number of deaths in each month is.... We found that the highest number of deaths was in May and June, with a high of around 2,000, and the lowest months were in February, July and December, with around 500. The death toll in the remaining months was concentrated around 1,000. Combined with the ideas introduced at the beginning of the article, this data can be combined with other relevant data to analyze, and perhaps unexpected discoveries can be obtained. This is the direction of future research that can be further explored, and this data can be used as a basis. You can also drill down into other years' data, or trends in total deaths over several years, to create a line chart.
+To create the table we expect follows this procedure: simulate with a dataset, read the raw data, clean the data, and finally the data was accurately presented and consistent with the sketch we made. The number of deaths in each month is as followed:
 
-The output of that code is @tbl-deathregistrytable
+January: 1083, February: 485, March: 1012, April: 1677, May: 2008, June: 1928, July: 417, August: 912, September: 1268, October: 1182, November: 1458, December: 611. 
+
+We found that the highest number of deaths was in May and June, with a high of around 2,000, and the lowest months were in February, July and December, with around 500. The death toll in the remaining months was concentrated around 1,000. 
+
+Combined with the ideas introduced at the beginning of the article, this data can be combined with other relevant data to analyze, and perhaps unexpected discoveries can be obtained. This is the direction of future research that can be further explored, and this data can be used as a basis. You can also drill down into other years' data, or trends in total deaths over several years, to create a line chart.
+
+The result of our code are shown by @tbl-deathregistrytable.
 ```{r}
 #| echo: false
 #| warning: false
@@ -144,7 +162,7 @@ cleaned_death_registry |>
 
 
 # Conclusion
-Overall, this study successfully plotted the number of deaths registered in Toronto by month in 2023, and achieved the expected results. The highest number of deaths was concentrated in May and June, with a high of around 2,000, and the lowest months were in February, July and December, with around 500. The death toll in the remaining months was concentrated around 1,000. It is believed that data can be used to assist in government management, policy formulation, and improvement of people's livelihood.
+Overall, this study successfully plotted the number of deaths registered in Toronto by month in 2023, and achieved the expected results. The highest number of deaths was concentrated in May and June, with a high of around 2,000, and the lowest months were in February, July and December, with a low of around 500. The death toll in the remaining months was concentrated around 1,000. It is believed that data can be used to assist in government management, policy formulation, and improvement of people's livelihood.
 
 \newpage
 
@@ -155,6 +173,9 @@ Overall, this study successfully plotted the number of deaths registered in Toro
 # Additional data details
 
 ## Simulation
+
+@tbl-simulatedata
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -185,7 +206,7 @@ head(simulated_death_data) |>
 
 ## Read raw data
 
-
+@tbl-rawdata
 ```{r}
 #| echo: false
 #| warning: false
@@ -201,7 +222,7 @@ head(raw_death_registry) |>
   )
 ```
 
-
+@tbl-cleanedata
 ## Clean data
 ```{r}
 #| echo: false
@@ -218,7 +239,7 @@ head(cleaned_death_registry) |>
 
 ## Tests
 
-I wrote down 3 tests to check whether the cleaned death registry data suits our expectation. Separately test time_period's value, time_period's class and death_licenses's class.
+Three tests were wrote down to check whether the cleaned death registry data suits our expectation. Separately test time_period's value, time_period's class and death_licenses's class.
 ```{r}
 #| echo: false
 #| warning: false
