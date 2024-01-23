@@ -38,12 +38,6 @@ These speculation may help in the formulation of future policies, such as whethe
 
 This study will end with these numbers documenting the lives that have accompanied the city and telling their stories implicitly to some extent.
 
-The remainder of this paper is structured as follows. 
-@sec-Data,
-@sec-Result,
-@sec-Conclusion,
-@sec-Appendix
-
 
 # Data
 
@@ -175,6 +169,7 @@ cleaned_death_registry |>
   )
 ```
 
+\newpage
 
 # Conclusion
 Overall, this study successfully plotted the number of deaths registered in Toronto by month in 2023, and achieved the expected results. The highest number of deaths was concentrated in May and June, with a high of around 2,000, and the lowest months were in February, July and December, with a low of around 500. The death toll in the remaining months was concentrated around 1,000. It is believed that data can be used to assist in government management, policy formulation, and improvement of people's livelihood.
