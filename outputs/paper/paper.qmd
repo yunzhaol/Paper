@@ -13,7 +13,6 @@ bibliography: references.bib
 
 ```{r}
 #| echo: false
-#| include: true
 #| warning: false
 #| message: false
 
@@ -70,12 +69,13 @@ kable(
 
 ## Read raw data
 
-## Clean data
+
 ```{r}
 #| echo: false
-#| include: false
 #| warning: false
 #| message: false
+#| label: tbl-rawdata
+#| tbl-cap: "Raw Death Registry"
 #### Acquire ####
 raw_death_registry <-
   read_csv(
@@ -88,13 +88,20 @@ write_csv(
   file = "raw_death_registry.csv"
 )
 
-head(raw_death_registry)
+head(raw_death_registry)|>
+  kable(
+    col.names = c("_id", "CIVIC_CENTRE", "DEATH_LICENSES", "PLACE_OF_DEATH", "TIME_PERIOD"),
+  booktabs = TRUE
+)
 ```
 
+
+## Clean data
 ```{r}
 #| echo: false
 #| warning: false
-#| include: false
+#| label: tbl-cleanedata
+#| tbl-cap: "Cleaned Death Registry"
 #### Clean ####
 cleaned_death_registry <-
   clean_names(raw_death_registry) |>
@@ -105,7 +112,11 @@ cleaned_death_registry <-
   ) |>
   select(time_period, death_licenses)
 
-head(cleaned_death_registry)
+head(cleaned_death_registry)|>
+  kable(
+    col.names = c ("time_period", "death_licenses"),
+  booktabs = TRUE
+)
 ```
 ```{r}
 #| echo: false
