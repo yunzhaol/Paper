@@ -30,41 +30,12 @@ library(styler)
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. 
-
+Death is a topic that people are not often willing to talk about, but it is closely related to municipal management and social resource allocation, so it is necessary to understand the data of death registration and do some basic statistical analysis of it. The data source in this study was obtained by opendatatoronto, from which the data of the Toronto area in 2023 were selected for research and analysis, hoping to produce a table reflecting the number of deaths registered in the Toronto area in each month of 2023, and correlate the data with related factors. Speculation may help in the formulation of future policies, such as whether the death toll is higher in the colder months, then the government can increase investment in the construction of shelters, if it is because of the epidemic or epidemic in certain months, then it can be prevented according to the relevant month and transmission trend, formulate a mask-related policy or appropriately restrict travel, or because of some large-scale accident that caused a large number of new deaths. Which months have a low number of deaths can also be related to the input of some public resources, the increase in per capita income, and the improvement of social welfare, which in turn can be used to judge whether these policies and improvements are significant, whether people's quality of life and income are stable, and whether social security is good. The government can regulate these factors to reduce the number of deaths caused by non-aging, which is the long-term significance of this study. This study will end with these numbers documenting the lives that have accompanied the city and ending their stories.
 The remainder of this paper is structured as follows. @sec-data....
 
 
 # Data
 
-## Simulation
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-#| label: tbl-simulatedata
-#| tbl-cap: "Dataset Simulation"
-# simulate the dataset
-#### Simulate ####
-set.seed(23)
-
-simulated_death_data <-
-  tibble(
-    time_period = rep(c(sprintf("2023-0%s", c(1:9)), sprintf("2023-1%s", c(0:2))), times = 3),
-    place_of_death = c(rep("Toronto", times = 36)),
-    death_number =
-      rpois(
-        n = 36,
-        lambda = 50
-      ) # Draw 36 times from the Poisson distribution
-  )
-
-head(simulated_death_data) |>
-  kable(
-    col.names = c("time period", "place_of_death", "death_number"),
-    booktabs = TRUE
-  )
-```
 
 
 ## Read raw data
@@ -74,8 +45,6 @@ head(simulated_death_data) |>
 #| echo: false
 #| warning: false
 #| message: false
-#| label: tbl-rawdata
-#| tbl-cap: "Raw Death Registry"
 #### Acquire ####
 raw_death_registry <-
   read_csv(
@@ -88,11 +57,6 @@ write_csv(
   file = "raw_death_registry.csv"
 )
 
-head(raw_death_registry) |>
-  kable(
-    col.names = c("_id", "CIVIC_CENTRE", "DEATH_LICENSES", "PLACE_OF_DEATH", "TIME_PERIOD"),
-    booktabs = TRUE
-  )
 ```
 
 
@@ -100,8 +64,6 @@ head(raw_death_registry) |>
 ```{r}
 #| echo: false
 #| warning: false
-#| label: tbl-cleanedata
-#| tbl-cap: "Cleaned Death Registry"
 #### Clean ####
 cleaned_death_registry <-
   clean_names(raw_death_registry) |>
@@ -112,12 +74,10 @@ cleaned_death_registry <-
   ) |>
   select(time_period, death_licenses)
 
-head(cleaned_death_registry) |>
-  kable(
-    col.names = c("time_period", "death_licenses"),
-    booktabs = TRUE
-  )
 ```
+
+
+## Tests
 ```{r}
 #| echo: false
 #| warning: false
@@ -181,8 +141,93 @@ cleaned_death_registry |>
 ```
 
 
-
 # Conclusion
+
+
+\newpage
+
+\appendix
+
+# Appendix {-}
+
+# Additional data details
+
+## Simulation
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: tbl-simulatedata
+#| tbl-cap: "Dataset Simulation"
+# simulate the dataset
+#### Simulate ####
+set.seed(23)
+
+simulated_death_data <-
+  tibble(
+    time_period = rep(c(sprintf("2023-0%s", c(1:9)), sprintf("2023-1%s", c(0:2))), times = 3),
+    place_of_death = c(rep("Toronto", times = 36)),
+    death_number =
+      rpois(
+        n = 36,
+        lambda = 50
+      ) # Draw 36 times from the Poisson distribution
+  )
+head(simulated_death_data) |>
+  kable(
+    col.names = c("time period", "place_of_death", "death_number"),
+    booktabs = TRUE
+  )
+```
+
+
+## Read raw data
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: tbl-rawdata
+#| tbl-cap: "Raw Death Registry"
+#### Acquire ####
+
+head(raw_death_registry) |>
+  kable(
+    col.names = c("_id", "CIVIC_CENTRE", "DEATH_LICENSES", "PLACE_OF_DEATH", "TIME_PERIOD"),
+    booktabs = TRUE
+  )
+```
+
+
+## Clean data
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-cleanedata
+#| tbl-cap: "Cleaned Death Registry"
+#### Clean ####
+head(cleaned_death_registry) |>
+  kable(
+    col.names = c("time_period", "death_licenses"),
+    booktabs = TRUE
+  )
+```
+
+## Tests
+
+I wrote down 3 tests to check whether the cleaned death registry data suits our expectation. Separately test time_period's value, time_period's class and death_licenses's class.
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| include: false
+#### Test ####
+cleaned_death_registry$time_period |>
+  unique() == c(sprintf("2023-0%s-01", c(1:9)), "2023-10-01", "2023-11-01", "2023-12-01")
+cleaned_death_registry$time_period |> class() == "Date"
+cleaned_death_registry$death_licenses |> class() == "numeric"
+```
 
 
 
