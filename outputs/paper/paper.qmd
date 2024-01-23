@@ -117,6 +117,8 @@ cleaned_death_registry <-
 
 # Results
 
+The table we were looking for at the beginning of our research was modeled with a dataset, the raw data was read, the clean data was cleaned, and the data was accurately presented and consistent with the sketch. The number of deaths in each month is.... We found that the highest number of deaths was in May and June, with a high of around 2,000, and the lowest months were in February, July and December, with around 500. The death toll in the remaining months was concentrated around 1,000. Combined with the ideas introduced at the beginning of the article, this data can be combined with other relevant data to analyze, and perhaps unexpected discoveries can be obtained. This is the direction of future research that can be further explored, and this data can be used as a basis. You can also drill down into other years' data, or trends in total deaths over several years, to create a line chart.
+
 The output of that code is @tbl-deathregistrytable
 ```{r}
 #| echo: false
@@ -142,7 +144,7 @@ cleaned_death_registry |>
 
 
 # Conclusion
-
+Overall, this study successfully plotted the number of deaths registered in Toronto by month in 2023, and achieved the expected results. The highest number of deaths was concentrated in May and June, with a high of around 2,000, and the lowest months were in February, July and December, with around 500. The death toll in the remaining months was concentrated around 1,000. It is believed that data can be used to assist in government management, policy formulation, and improvement of people's livelihood.
 
 \newpage
 
