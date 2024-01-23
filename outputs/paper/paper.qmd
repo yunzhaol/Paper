@@ -42,23 +42,47 @@ library(styler)
 #| include: true
 #| warning: false
 #| message: false
-#### Acquire ####
-#raw_death_registry <-
-#  read_csv(
-#    file =
-#      "Death Registry Statistics Data.csv",
-#    show_col_types = FALSE
-#)
+#### Simulate ####
+set.seed(23)
 
+simulated_death_data <-
+  tibble(
+    time_period = rep(c(sprintf("2023-0%s", c(1:9)), sprintf("2023-1%s", c(0:2))),times = 3),
+    place_of_death = c(rep("Toronto", times = 36)),
+    death_number =
+      rpois(
+        n = 36,
+        lambda = 50
+      ) # Draw 36 times from the Poisson distribution
+  )
+
+head(simulated_death_data)
+```
+
+
+
+```{r}
+#| echo: false
+#| include: true
+#| warning: false
+#| message: false
+#### Acquire ####
 raw_death_registry <-
-  # Each package is associated with a unique id  found in the "For 
-  # Developers" tab of the relevant page from Open Data Toronto
-  # https://open.toronto.ca/dataset/daily-shelter-overnight-service-occupancy-capacity/
-  list_package_resources("cba07a90-984b-42d2-9131-701c8c2a9788") |>
-  # Within that package, we are interested in the 2021 dataset
-  filter(name == 
-    "Death Registry Statistics Data.csv") |>
-  get_resource()
+ read_csv(
+   here::here("inputs/data/Death Registry Statistics Data.csv"),
+   show_col_types = FALSE
+)
+#### Acquire ####
+# raw_death_registry <-
+#   # Each package is associated with a unique id  found in the "For 
+#   # Developers" tab of the relevant page from Open Data Toronto
+#   # https://open.toronto.ca/dataset/daily-shelter-overnight-service-occupancy-capacity/
+#   list_package_resources("cba07a90-984b-42d2-9131-701c8c2a9788") |>
+#   # Within that package, we are interested in the 2021 dataset
+#   filter(name == 
+#     "Death Registry Statistics Data.csv") |>
+#   # Having reduced the dataset to one row we can get the resource
+#   get_resource()
 
 write_csv(
   x = raw_death_registry,
@@ -77,7 +101,7 @@ cleaned_death_registry <-
   mutate(time_period = ym(time_period)) |> 
   filter(
     place_of_death == "Toronto",
-    time_period %in% c("2023-01-01","2023-02-01","2023-03-01","2023-04-01","2023-05-01","2023-06-01","2023-07-01","2023-08-01","2023-09-01","2023-10-01","2023-11-01","2023-12-01")
+    time_period %in% c(sprintf("2023-0%s-01", c(1:9)),"2023-10-01","2023-11-01","2023-12-01")
     ) |>
   select(time_period, death_licenses)
 
