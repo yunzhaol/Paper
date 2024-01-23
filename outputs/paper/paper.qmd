@@ -52,6 +52,22 @@ This dataset includes information relating to the registration of deaths documen
 The dataset is created in support of the Vital Statistics Act, which is a Provincial legislation. The dataset also supports the City's operational requirements and business functions.
 [ https://open.toronto.ca/dataset/death-registry-statistics/]("https://open.toronto.ca/dataset/death-registry-statistics/")
 
+The original data has five columns, and the column name and introduction are as followed:
+
+row: identifier for Open Data database,
+
+CIVIC_CENTRE:	Civic centre code,
+
+DEATH_LICENSES:	Number of deaths registered in the month,
+
+PLACE_OF_DEATH:	Place where death occurred,
+
+TIME_PERIOD:	Month death registered.
+There class are separately: numeric, character, numeric, character and numeric.
+
+Depending on our project expectation, only two columns named time_period and death_license after filtering by region and time period are needed. This column of data, called the time period, is presented in the form of yyyy-mm characters. After that, we need to modify it to date and count by month. The column, titled Death Certificate, is presented in numeric form, with a maximum value of 2007 and a minimum value of 1, reflecting a single record of local deaths over each time period. And for the column called place_of_death, can be used to filter out death records in the Toronto area. 
+
+This is the basic description of the data of interests. The appendix shows the process of simulating, reading, cleaning, and creating tables of data in details.
 
 
 ```{r}
@@ -69,7 +85,6 @@ write_csv(
   x = raw_death_registry,
   file = "raw_death_registry.csv"
 )
-
 ```
 
 
@@ -86,7 +101,6 @@ cleaned_death_registry <-
     time_period %in% c(sprintf("2023-0%s-01", c(1:9)), "2023-10-01", "2023-11-01", "2023-12-01")
   ) |>
   select(time_period, death_licenses)
-
 ```
 
 
@@ -228,10 +242,13 @@ head(raw_death_registry) |>
   )
 ```
 
+
+
+## Clean data
+
 The purpose of this step is to filter out the two columns of data we need for the Toronto area and the time period in 2023, in preparation for the table we about to create. First, the clean_names function is used to change the column name to lowercase and use _ to split the word. Then the date character type is converted to the date type. After that, we filtered the data of the death register in Toronto and belonging to 2023 by listing all possible month data. Finally, select the two column we need, which is time_period and number of death_license.
 
 The top 6 rows are shown by @tbl-cleanedata
-## Clean data
 ```{r}
 #| echo: false
 #| warning: false
