@@ -1,7 +1,7 @@
 ---
 title: "Toronto Death Registry"
 author: Yunzhao Li
-thanks: "Code and data are available at: [https://github.com/yunzhaol/Paper.git](https://github.com/yunzhaol/Paper.git)."
+thanks: "Code and data are available at: [https://github.com/yunzhaol/Toronto_Death_Registry.git](https://github.com/yunzhaol/Toronto_Death_Registry.git)."
 date: 22 January 2024
 abstract: "In Toronto, there are many people died each year. The data of death registry supports the City's operational requirements and business functions. In this project we will make a table of number of death in Toronto for each month in 2023. By analyzing this, we can find months with high number of death and make conjectures with factors like weather, poicies or incidents of that particular month."
 format: pdf
@@ -38,12 +38,13 @@ The remainder of this paper is structured as follows. @sec-data....
 
 # Data
 
-## Simutation
+## Simulation
 ```{r}
 #| echo: false
-#| include: false
 #| warning: false
 #| message: false
+#| label: tbl-simulatedata
+#| tbl-cap: "Dataset Simulation"
 #simulate the dataset
 #### Simulate ####
 set.seed(23)
@@ -59,7 +60,11 @@ simulated_death_data <-
       ) # Draw 36 times from the Poisson distribution
   )
 
-head(simulated_death_data)
+head(simulated_death_data)|>
+kable(
+    col.names = c("time period", "place_of_death", "death_number"),
+  booktabs = TRUE
+)
 ```
 
 
