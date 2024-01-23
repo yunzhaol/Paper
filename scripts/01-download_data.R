@@ -1,26 +1,33 @@
 #### Preamble ####
-# Purpose: Downloads and saves the data from [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Downloads and saves the data from 
+# - ("https://open.toronto.ca/dataset/death-registry-statistics/")
+# Author: Yunzhao Li
+# Date: 22 January 2024
+# Contact: yunzhao.li@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Pre-requisites: None
+
 
 
 #### Workspace setup ####
 library(opendatatoronto)
 library(tidyverse)
-# [...UPDATE THIS...]
+library(dplyr)
 
 #### Download data ####
-# [...ADD CODE HERE TO DOWNLOAD...]
-
+raw_death_registry <-
+  read_csv(
+    here::here("inputs/data/Death Registry Statistics Data.csv"),
+    show_col_types = FALSE
+  )
 
 
 #### Save data ####
-# [...UPDATE THIS...]
-# change the_raw_data to whatever name you assigned when you downloaded it.
-write_csv(the_raw_data, "inputs/data/raw_data.csv") 
+write_csv(
+  x = raw_death_registry,
+  file = "raw_death_registry.csv"
+)
+
+head(raw_death_registry)
 
          
