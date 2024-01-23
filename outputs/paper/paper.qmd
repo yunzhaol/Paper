@@ -1,10 +1,12 @@
 ---
-title: "Toronto death registry"
+title: "Toronto Death Registry"
 author: Yunzhao Li
 thanks: "Code and data are available at: [https://github.com/yunzhaol/Paper.git](https://github.com/yunzhaol/Paper.git)."
 date: 22 January 2024
 abstract: "In Toronto, there are many people died each year. The data of death registry supports the City's operational requirements and business functions. In this project we will make a table of number of death in Toronto for each month in 2023. By analyzing this, we can find months with high number of death and make conjectures with factors like weather, poicies or incidents of that particular month."
 format: pdf
+number-sections: true
+toc: true
 bibliography: references.bib
 ---
 
@@ -33,7 +35,10 @@ You can and should cross-reference sections and sub-sections.
 
 The remainder of this paper is structured as follows. @sec-data....
 
+
 # Data
+
+## Simutation
 ```{r}
 #| echo: false
 #| include: false
@@ -58,7 +63,9 @@ head(simulated_death_data)
 ```
 
 
+## Read raw data
 
+## Clean data
 ```{r}
 #| echo: false
 #| include: false
@@ -133,6 +140,8 @@ cleaned_death_registry <-
 
 \newpage
 
+# Results
+
 The output of that code is @tbl-deathregistrytable
 ```{r}
 #| echo: false
@@ -158,45 +167,7 @@ cleaned_death_registry |>
 
 
 
-
-# Data {#sec-data}
-
-Some of our data is of penguins (@fig-bills), from @palmerpenguins.
-
-```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
-#| echo: false
-
-# ggplot(penguins, aes(x = island, fill = species)) +
-#   geom_bar(alpha = 0.8) +
-#   scale_fill_manual(values = c("darkorange","purple","cyan4"),
-#                     guide = "none") +
-#   theme_minimal() +
-#   facet_wrap(~species, ncol = 1) +
-#   coord_flip()
-```
-
-Talk more about it.
-
-And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
-
-```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
-#| echo: false
-#| warning: false
-#| message: false
-
-# analysis_data <- read_csv(here::here("outputs/data/analysis_data.csv"))
-#
-# analysis_data |>
-#   ggplot(aes(x = width, y = length)) +
-#   geom_point(alpha = 0.8) +
-#   theme_minimal() +
-#   labs(x = "Wing width (mm)",
-#        y = "Wing length (mm)")
-```
+# Conclusion
 
 
 
