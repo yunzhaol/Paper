@@ -47,7 +47,7 @@ set.seed(23)
 
 simulated_death_data <-
   tibble(
-    time_period = rep(c(sprintf("2023-0%s", c(1:9)), sprintf("2023-1%s", c(0:2))),times = 3),
+    time_period = rep(c(sprintf("2023-0%s", c(1:9)), sprintf("2023-1%s", c(0:2))), times = 3),
     place_of_death = c(rep("Toronto", times = 36)),
     death_number =
       rpois(
@@ -68,21 +68,10 @@ head(simulated_death_data)
 #| message: false
 #### Acquire ####
 raw_death_registry <-
- read_csv(
-   here::here("inputs/data/Death Registry Statistics Data.csv"),
-   show_col_types = FALSE
-)
-#### Acquire ####
-# raw_death_registry <-
-#   # Each package is associated with a unique id  found in the "For 
-#   # Developers" tab of the relevant page from Open Data Toronto
-#   # https://open.toronto.ca/dataset/daily-shelter-overnight-service-occupancy-capacity/
-#   list_package_resources("cba07a90-984b-42d2-9131-701c8c2a9788") |>
-#   # Within that package, we are interested in the 2021 dataset
-#   filter(name == 
-#     "Death Registry Statistics Data.csv") |>
-#   # Having reduced the dataset to one row we can get the resource
-#   get_resource()
+  read_csv(
+    here::here("inputs/data/Death Registry Statistics Data.csv"),
+    show_col_types = FALSE
+  )
 
 write_csv(
   x = raw_death_registry,
@@ -98,11 +87,11 @@ head(raw_death_registry)
 #### Clean ####
 cleaned_death_registry <-
   clean_names(raw_death_registry) |>
-  mutate(time_period = ym(time_period)) |> 
+  mutate(time_period = ym(time_period)) |>
   filter(
     place_of_death == "Toronto",
-    time_period %in% c(sprintf("2023-0%s-01", c(1:9)),"2023-10-01","2023-11-01","2023-12-01")
-    ) |>
+    time_period %in% c(sprintf("2023-0%s-01", c(1:9)), "2023-10-01", "2023-11-01", "2023-12-01")
+  ) |>
   select(time_period, death_licenses)
 
 head(cleaned_death_registry)
@@ -141,14 +130,15 @@ cleaned_death_registry |>
     label = TRUE,
     abbr = FALSE
   )) |>
-  arrange(time_period_month) |> 
+  arrange(time_period_month) |>
   drop_na(death_licenses) |>
-  summarise(death_licenses = sum(death_licenses),
-            .by = time_period_month) |>
+  summarise(
+    death_licenses = sum(death_licenses),
+    .by = time_period_month
+  ) |>
   kable(
     col.names = c("Month", "Number of death")
   )
-
 ```
 
 
@@ -193,8 +183,8 @@ And also planes (@fig-planes). (You can change the height and width, but don't w
 #| message: false
 
 # analysis_data <- read_csv(here::here("outputs/data/analysis_data.csv"))
-# 
-# analysis_data |> 
+#
+# analysis_data |>
 #   ggplot(aes(x = width, y = length)) +
 #   geom_point(alpha = 0.8) +
 #   theme_minimal() +
@@ -250,7 +240,7 @@ In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. Th
 # pp_check(first_model) +
 #   theme_classic() +
 #   theme(legend.position = "bottom")
-# 
+#
 # posterior_vs_prior(first_model) +
 #   theme_minimal() +
 #   scale_color_brewer(palette = "Set1") +
@@ -275,7 +265,7 @@ In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. Th
 #| layout-ncol: 2
 
 # plot(first_model, "trace")
-# 
+#
 # plot(first_model, "rhat")
 ```
 
