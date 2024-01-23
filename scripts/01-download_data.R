@@ -8,7 +8,6 @@
 # Pre-requisites: None
 
 
-
 #### Workspace setup ####
 library(opendatatoronto)
 library(tidyverse)
