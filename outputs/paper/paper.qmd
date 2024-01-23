@@ -49,7 +49,8 @@ The remainder of this paper is structured as follows.
 
 This dataset includes information relating to the registration of deaths documented by Registry Services staff located in four of the civic centres (Scarborough, North York, Toronto and Etobicoke). Registration of death data is entered into the Registry Services Tracking System (RSTS), from which aggregate statistical information is generated to create the dataset. The dataset resides in an Oracle database in the City's environment.
 
-The dataset is created in support of the Vital Statistics Act, which is a Provincial legislation. The dataset also supports the City's operational requirements and business (functions."https://open.toronto.ca/dataset/death-registry-statistics/")
+The dataset is created in support of the Vital Statistics Act, which is a Provincial legislation. The dataset also supports the City's operational requirements and business functions.
+[ https://open.toronto.ca/dataset/death-registry-statistics/]("https://open.toronto.ca/dataset/death-registry-statistics/")
 
 
 
@@ -174,7 +175,9 @@ Overall, this study successfully plotted the number of deaths registered in Toro
 
 ## Simulation
 
-@tbl-simulatedata
+We simulated the dataset using the tipple function and determined the feasibility of the plan。
+
+The top 6 rows are shown by @tbl-simulatedata
 
 ```{r}
 #| echo: false
@@ -206,7 +209,10 @@ head(simulated_death_data) |>
 
 ## Read raw data
 
-@tbl-rawdata
+We downloaded a csv document which documents the data of this topic: About Death Registry Statistics from opendatatoronto as raw data.
+
+The top 6 rows are shown by @tbl-rawdata
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -222,7 +228,9 @@ head(raw_death_registry) |>
   )
 ```
 
-@tbl-cleanedata
+The purpose of this step is to filter out the two columns of data we need for the Toronto area and the time period in 2023, in preparation for the table we about to create. First, the clean_names function is used to change the column name to lowercase and use _ to split the word. Then the date character type is converted to the date type. After that, we filtered the data of the death register in Toronto and belonging to 2023 by listing all possible month data. Finally, select the two column we need, which is time_period and number of death_license.
+
+The top 6 rows are shown by @tbl-cleanedata
 ## Clean data
 ```{r}
 #| echo: false
@@ -239,7 +247,7 @@ head(cleaned_death_registry) |>
 
 ## Tests
 
-Three tests were wrote down to check whether the cleaned death registry data suits our expectation. Separately test time_period's value, time_period's class and death_licenses's class.
+Three tests were wrote down to check whether the cleaned death registry data suits our expectation. Separately test time_period's value, time_period's class and death_license's class.
 ```{r}
 #| echo: false
 #| warning: false
