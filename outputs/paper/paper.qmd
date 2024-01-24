@@ -1,5 +1,5 @@
 ---
-title: "Toronto Death Registry in 2023"
+title: "Toronto 2023 Monthly Death Registry"
 author: Yunzhao Li
 thanks: "Code and data are available at: [https://github.com/yunzhaol/Toronto_Death_Registry.git](https://github.com/yunzhaol/Toronto_Death_Registry.git)."
 date: today
@@ -121,9 +121,9 @@ cleaned_death_registry$death_licenses |> max() <= 2007
 
 
 ```{r}
-# Save data
 #| echo: false
 #| warning: false
+# Save data
 write_csv(
   x = cleaned_death_registry,
   file = "cleaned_death_registry.csv"
@@ -178,6 +178,7 @@ cleaned_death_registry |>
   kable(
     col.names = c("Month", "Number of death")
   )
+
 ```
 
 \newpage
