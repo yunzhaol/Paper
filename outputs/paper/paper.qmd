@@ -2,8 +2,8 @@
 title: "Toronto Death Registry"
 author: Yunzhao Li
 thanks: "Code and data are available at: [https://github.com/yunzhaol/Toronto_Death_Registry.git](https://github.com/yunzhaol/Toronto_Death_Registry.git)."
-date: 22 January 2024
-abstract: "In Toronto, there are many people died each year. The data of death registry supports the City's operational requirements and business functions. In this project we will make a table of number of death in Toronto for each month in 2023. By analyzing this, we can find months with high number of death and make conjectures with factors like weather, poicies or incidents of that particular month."
+date: today
+abstract: "In Toronto, there are many people who die each year. The data of death registry supports the City's operational requirements and business functions. In this paper we will make a table of the number of death in Toronto for each month in 2023. By analyzing this, we can find months with a high number of deaths and make conjectures with factors like weather, policies or incidents of that particular month."
 format: pdf
 number-sections: true
 toc: true
@@ -59,7 +59,7 @@ PLACE_OF_DEATH:	Place where death occurred,
 TIME_PERIOD:	Month death registered.
 There class are separately: numeric, character, numeric, character and numeric.
 
-Depending on our project expectation, only two columns named time_period and death_license after filtering by region and time period are needed. This column of data, called the time period, is presented in the form of yyyy-mm characters. After that, we need to modify it to date and count by month. The column, titled Death Certificate, is presented in numeric form, with a maximum value of 2007 and a minimum value of 1, reflecting a single record of local deaths over each time period. And for the column called place_of_death, can be used to filter out death records in the Toronto area. 
+Depending on our expectation, only two columns named time_period and death_license after filtering by region and time period are needed. This column of data, called the time period, is presented in the form of yyyy-mm characters. After that, we need to modify it to date and count by month. The column, titled Death Certificate, is presented in numeric form, with a maximum value of 2007 and a minimum value of 1, reflecting a single record of local deaths over each time period. And for the column called place_of_death, can be used to filter out death records in the Toronto area. 
 
 This is the basic description of the data of interests. The appendix shows the process of simulating, reading, cleaning, and creating tables of data in details.
 
