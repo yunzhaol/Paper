@@ -1,7 +1,9 @@
 # What is the number of death in Toronto in 2023? An analysis for death registry of each month.
 
 ## Overview
-This paper analyzes data of death registry in Toronto in 2023, to see the number of death in each month. LLMs were not used in this project.
+This paper analyzes data of death registry in Toronto in 2023, to see the number of death in each month. 
+
+Claim: LLMs were not used in this project.
 
 ## File Structure
 
