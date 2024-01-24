@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Downloads and saves the data from 
+# Purpose: Downloads and saves the data from
 # - ("https://open.toronto.ca/dataset/death-registry-statistics/")
 # Author: Yunzhao Li
 # Date: 22 January 2024
@@ -28,5 +28,3 @@ write_csv(
 )
 
 head(raw_death_registry)
-
-         

@@ -1,12 +1,12 @@
 #### Preamble ####
-# Purpose: Simulates some data about time period of death and the number of 
-#death that could resemble our dataset.
+# Purpose: Simulates some data about time period of death and the number of
+# death that could resemble our dataset.
 # Author: Yunzhao Li
 # Date: 22 January 2024
 # Contact: yunzhao.li@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: None
-# Datasets: 
+# Datasets:
 ## - ("https://open.toronto.ca/dataset/death-registry-statistics/")
 
 #### Workspace setup ####
@@ -28,6 +28,3 @@ simulated_death_data <-
   )
 
 head(simulated_death_data)
-
-
-

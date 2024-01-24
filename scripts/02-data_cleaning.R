@@ -13,7 +13,7 @@ library(janitor)
 library(dplyr)
 
 #### Clean data ####
-
+# filter the death registry in Toronto and in 2023
 cleaned_death_registry <-
   clean_names(raw_death_registry) |>
   mutate(time_period = ym(time_period)) |>
