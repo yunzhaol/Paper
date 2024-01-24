@@ -108,7 +108,7 @@ cleaned_death_registry <-
 #| message: false
 #| include: false
 #### Test ####
-#check the class and value, death_licenses must be greater than 1 and less than 2007.
+# check the class and value, death_licenses must be greater than 1 and less than 2007.
 cleaned_death_registry$time_period |>
   unique() == c(sprintf("2023-0%s-01", c(1:9)), "2023-10-01", "2023-11-01", "2023-12-01")
 cleaned_death_registry$time_period |> class() == "Date"
@@ -161,7 +161,7 @@ The result of our code are shown by @tbl-deathregistrytable.
 #| label: tbl-deathregistrytable
 #| tbl-cap: "Number of death in Toronto for each month in 2023"
 
-# create the table of death registry for each month
+# create a table of death registry for each month
 cleaned_death_registry |>
   mutate(time_period_month = month(
     time_period,
@@ -218,7 +218,7 @@ simulated_death_data <-
         lambda = 50
       ) # Draw 36 times from the Poisson distribution
   )
-#create a table to see the simulated data of top 6 rows 
+# create a table to see the simulated data of top 6 rows 
 head(simulated_death_data) |>
   kable(
     col.names = c("time period", "place_of_death", "death_number"),
@@ -240,7 +240,7 @@ The top 6 rows are shown by @tbl-rawdata
 #| label: tbl-rawdata
 #| tbl-cap: "Raw Death Registry"
 #### Acquire ####
-#create a table to see the raw data of top 6 rows 
+# create a table to see the raw data of top 6 rows 
 head(raw_death_registry) |>
   kable(
     col.names = c("_id", "CIVIC_CENTRE", "DEATH_LICENSES", "PLACE_OF_DEATH", "TIME_PERIOD"),
@@ -261,7 +261,7 @@ The top 6 rows are shown by @tbl-cleanedata
 #| label: tbl-cleanedata
 #| tbl-cap: "Cleaned Death Registry"
 #### Clean ####
-#create a table to see the cleaned data of top 6 rows 
+# create a table to see the cleaned data of top 6 rows 
 head(cleaned_death_registry) |>
   kable(
     col.names = c("time_period", "death_licenses"),
@@ -278,7 +278,7 @@ Three tests were wrote down to check whether the cleaned death registry data sui
 #| message: false
 #| include: false
 #### Test ####
-#check the class and value, death_licenses must be greater than 1 and less than 2007.
+# check the class and value, death_licenses must be greater than 1 and less than 2007.
 cleaned_death_registry$time_period |>
   unique() == c(sprintf("2023-0%s-01", c(1:9)), "2023-10-01", "2023-11-01", "2023-12-01")
 cleaned_death_registry$time_period |> class() == "Date"
