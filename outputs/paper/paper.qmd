@@ -1,8 +1,9 @@
 ---
-title: "Toronto Death Registry"
+title: "Toronto Death Registry in 2023"
 author: Yunzhao Li
 thanks: "Code and data are available at: [https://github.com/yunzhaol/Toronto_Death_Registry.git](https://github.com/yunzhaol/Toronto_Death_Registry.git)."
 date: today
+date-format: long
 abstract: "In Toronto, there are many people who die each year. The data of death registry supports the City's operational requirements and business functions. In this paper we will make a table of the number of death in Toronto for each month in 2023. By analyzing this, we can find months with a high number of deaths and make conjectures with factors like weather, policies or incidents of that particular month."
 format: pdf
 number-sections: true
