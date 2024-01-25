@@ -58,7 +58,7 @@ DEATH_LICENSES:	Number of deaths registered in the month,
 PLACE_OF_DEATH:	Place where death occurred,
 
 TIME_PERIOD:	Month death registered.
-There class are separately: numeric, character, numeric, character and numeric.
+Their classes are separately: numeric, character, numeric, character and numeric.
 
 Depending on our expectation, only two columns named time_period and death_license after filtering by region and time period are needed. This column of data, called the time period, is presented in the form of yyyy-mm characters. After that, we need to modify it to date and count by month. The column, titled Death Certificate, is presented in numeric form, with a maximum value of 2007 and a minimum value of 1, reflecting a single record of local deaths over each time period. And for the column called place_of_death, can be used to filter out death records in the Toronto area. 
 
