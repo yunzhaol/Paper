@@ -45,7 +45,17 @@ This study will end with these numbers documenting the lives that have accompani
 This dataset includes information relating to the registration of deaths documented by Registry Services staff located in four of the civic centres (Scarborough, North York, Toronto and Etobicoke). Registration of death data is entered into the Registry Services Tracking System (RSTS), from which aggregate statistical information is generated to create the dataset. The dataset resides in an Oracle database in the City's environment.
 
 The dataset is created in support of the Vital Statistics Act, which is a Provincial legislation. The dataset also supports the City's operational requirements and business functions.
+
+The details of the data sources are shown here:
+Data quality score beta: Gold,
+Data last refreshed: Jan 1, 2024,
+Refreshed: Monthly,
+Data type: Table,
+Topics: Health,
+License: Open Government License - Toronto
+
 [ https://open.toronto.ca/dataset/death-registry-statistics/]("https://open.toronto.ca/dataset/death-registry-statistics/")
+
 
 The original data has five columns, and the column name and introduction are as followed:
 
