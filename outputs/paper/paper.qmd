@@ -35,7 +35,7 @@ Death is a topic that people are not often willing to talk about, but it is clos
 
 The data source in this study was obtained by opendatatoronto, from which the data of the Toronto area in 2023 were selected for research and analysis. We expect to produce a table reflecting the number of deaths registered in the Toronto area in each month of 2023, and correlate the data with related factors.
 
-These speculation may help in the formulation of future policies, such as whether the death toll is higher in the colder months, then the government can increase investment in the construction of shelters, if it is because of the epidemic or epidemic in certain months, then it can be prevented according to the relevant month and transmission trend, formulate a mask-related policy or appropriately restrict travel, or because of some large-scale accident that caused a large number of new deaths. Which months have a low number of deaths can also be related to the input of some public resources, the increase in per capita income, and the improvement of social welfare, which in turn can be used to judge whether these policies and improvements are significant, whether people's quality of life and income are stable, and whether social security is good. The government can regulate these factors to reduce the number of deaths caused by non-aging, which is the long-term significance of this study. 
+These speculation may help in the formulation of future policies, such as whether the death toll is higher in the colder months, then the government can increase investment in the construction of shelters, if it is because of the epidemic in certain months, then it can be prevented according to the relevant month and transmission trend, formulate a mask-related policy or appropriately restrict travel, or because of some large-scale accident that caused a large number of new deaths, appropriate measures can be put in place to improve the level of safety. Which months have a low number of deaths can also be related to the input of some public resources, per capita income, and the level of social welfare, which in turn can be used to judge whether these policies and improvements are significant, whether people's quality of life and income are stable, and whether social security is good. The government can regulate these factors to reduce the number of deaths caused by non-aging, which is the long-term significance of this study. 
 
 This study will end with these numbers documenting the lives that have accompanied the city and telling their stories implicitly to some extent.
 
@@ -60,7 +60,7 @@ PLACE_OF_DEATH:	Place where death occurred,
 TIME_PERIOD:	Month death registered.
 Their classes are separately: numeric, character, numeric, character and numeric.
 
-Depending on our expectation, only two columns named time_period and death_license after filtering by region and time period are needed. This column of data, called the time period, is presented in the form of yyyy-mm characters. After that, we need to modify it to date and count by month. The column, titled Death Certificate, is presented in numeric form, with a maximum value of 2007 and a minimum value of 1, reflecting a single record of local deaths over each time period. And for the column called place_of_death, can be used to filter out death records in the Toronto area. 
+Depending on our expectation, only two columns named time_period and death_license after filtering by region and time period are needed. This column of data, called the time period, is presented in the form of yyyy-mm characters. After that, we need to modify it to date and count the summarized data by month. The column, titled Death Certificate, is presented in numeric form, with a maximum value of 2007 and a minimum value of 1, reflecting a single record of local deaths over each time period. And for the column called place_of_death, can be used to filter out death records in the Toronto area. 
 
 This is the basic description of the data of interests. The appendix shows the process of simulating, reading, cleaning, and creating tables of data in details.
 
@@ -153,7 +153,7 @@ January: 1083, February: 485, March: 1012, April: 1677, May: 2008, June: 1928, J
 
 We found that the highest number of deaths was in May and June, with a high of around 2,000, and the lowest months were in February, July and December, with around 500. The death toll in the remaining months was concentrated around 1,000. 
 
-Combined with the ideas introduced at the beginning of the article, this data can be combined with other relevant data to analyze, and perhaps unexpected discoveries can be obtained. This is the direction of future research that can be further explored, and this data can be used as a basis. You can also drill down into other years' data, or trends in total deaths over several years, to create a line chart.
+Combined with the ideas introduced at the beginning of the article, this data can be combined with other relevant data to analyze, and perhaps unexpected discoveries can be obtained. This is the direction of future research that can be further explored, and this data can be used as a basis. We can also drill down into other years' data, or trends in total deaths over several years, to create a line chart.
 
 The result of our code are shown by @tbl-deathregistrytable.
 ```{r}
@@ -254,7 +254,7 @@ head(raw_death_registry) |>
 
 ## Clean data
 
-The purpose of this step is to filter out the two columns of data we need for the Toronto area and the time period in 2023, in preparation for the table we about to create. First, the clean_names function is used to change the column name to lowercase and use _ to split the word. Then the date character type is converted to the date type. After that, we filtered the data of the death register in Toronto and belonging to 2023 by listing all possible month data. Finally, select the two column we need, which is time_period and number of death_license.
+The purpose of this step is to filter out the two columns of data we need for the Toronto area and the time period in 2023, in preparation for the table we about to create. First, the clean_names function was called to change the column name to lowercase and use underlines to split the words. Then, we converted the class of time period from character to date and filtered the data of death register in Toronto happened in 2023 by listing all possible month data. Finally, selected the two columns we need, which is time_period and number of death_license.
 
 The top 6 rows are shown by @tbl-cleanedata
 ```{r}
@@ -273,7 +273,7 @@ head(cleaned_death_registry) |>
 
 ## Tests
 
-Three tests were wrote down to check whether the cleaned death registry data suits our expectation. Separately test time_period's value, time_period's class and death_license's class.
+Three tests were written to check whether the cleaned death registry data suits our expectation. We separately tested the time_period's value and class, death_license's value and class.
 ```{r}
 #| echo: false
 #| warning: false
