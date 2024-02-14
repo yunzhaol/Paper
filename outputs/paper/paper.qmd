@@ -206,7 +206,7 @@ Overall, this study successfully plotted the number of deaths registered in Toro
 
 ## Simulation
 
-We simulated the dataset using the tipple function and determined the feasibility of the plan。
+We simulated the dataset using the tipple function and determined the feasibility of the plan.
 
 The top 6 rows are shown by @tbl-simulatedata
 
